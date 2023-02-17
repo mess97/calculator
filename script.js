@@ -155,6 +155,7 @@
     }
   }
   //숫자 버튼요소를 전부 가져오기
+  const cellButtn = getAll(".cell_button");
   const numberButtons = getAll(".cell_button.number");
   //연산자 버튼 요소를 번부 가져오기
   const operationButtons = getAll(".cell_button.operation");
@@ -206,3 +207,12 @@
     calculator.updateDisplay();
   });
 })();
+
+cellButtn.forEach((button) => {
+  button.addEventListener("touchstart", () => {
+    button.classList.add("btn-active");
+  });
+  button.addEventListener("touchend", () => {
+    button.classList.remove("btn-active");
+  });
+});
