@@ -172,7 +172,8 @@
   //전부 숫자  버튼요소를 순회
   numberButtons.forEach((button) => {
     //매번 순회한 요소를 클릭 이벤트를 만듬
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
       //받은 버튼 요소의 텍스트를 넘겨주고
       //숫자를 입력을 받을때 하나하나식 잇풋창에 넘겨주는 매서드
       calculator.appendNumber(button.innerText);
@@ -182,26 +183,30 @@
   });
   //전부 조작 연산자  버튼요소를 순회
   operationButtons.forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
       //오퍼레이션(조작) 을 누를때 연산자를  operation에 할당,지정해주는  매서드
       calculator.setOpreation(button);
       calculator.updateDisplay();
     });
   });
   //computeButton->(=) 의 요소를 클릭시
-  computeButton.addEventListener("click", () => {
+  computeButton.addEventListener("click", (event) => {
+    event.preventDefault();
     //이전값과 현재 값을 계산하는 메서드
     calculator.compute();
     calculator.updateDisplay();
   });
   //클리어 버튼 클릭시
-  clearButton.addEventListener("click", () => {
+  clearButton.addEventListener("click", (event) => {
+    event.preventDefault();
     //클리어 매서드
     calculator.clear();
     calculator.updateDisplay();
   });
 
-  allClearButton.addEventListener("click", () => {
+  allClearButton.addEventListener("click", (event) => {
+    event.preventDefault();
     calculator.reset();
     calculator.updateDisplay();
   });
