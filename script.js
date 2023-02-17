@@ -206,13 +206,13 @@
     calculator.reset();
     calculator.updateDisplay();
   });
-})();
 
-cellButtn.forEach((button) => {
-  button.addEventListener("touchstart", () => {
-    button.classList.add("btn-active");
+  cellButtn.forEach((button) => {
+    button.addEventListener("touchstart", () => {
+      button.classList.add("btn-active");
+    });
+    button.addEventListener("touchend", () => {
+      button.classList.remove("btn-active");
+    });
   });
-  button.addEventListener("touchend", () => {
-    button.classList.remove("btn-active");
-  });
-});
+})();
