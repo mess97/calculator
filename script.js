@@ -79,6 +79,8 @@
     // 매개변수를 button으로 바꿔야됨
     setOpreation(button) {
       //매개변수는(button.innerText) 연사자 요소 의 텍스트
+      if (!this.currentValue) return;
+      this.resetOpreation();
       this.operation = button.innerText;
       //이전값에 현재값을 넣어주고
       this.prevValue = this.currentValue;
