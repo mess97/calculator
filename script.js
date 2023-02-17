@@ -76,40 +76,17 @@
       this.currentValue = this.currentValue.toString() + number.toString();
     }
 
-    //!!!!!!!!!!그냥 버튼을 가져와도 되지 않을까 굳이 필터를 쓰고  다시 버튼 요소를 찾기???
-    //오퍼레이션(조작) 을 누를때 연산자를  operation에 할당,지정해주는  매서드
-    setOpreation(operation) {
+    // 매개변수를 button으로 바꿔야됨
+    setOpreation(button) {
       //매개변수는(button.innerText) 연사자 요소 의 텍스트
-      if (!this.currentValue) return;
-      this.resetOpreation();
-      this.operation = operation;
+      this.operation = button.innerText;
       //이전값에 현재값을 넣어주고
       this.prevValue = this.currentValue;
       //현재값을 없애줘서 인풋창에도 없애줌
       this.currentValue = "";
-      //'operation'인 모든 요소들을 가져와서 elements라는 배열에 할당
-      const elements = Array.from(getAll(".operation"));
-      //filter 함수: elements배열에서
-      //operation(연사자 요소)를 포함한 첫 번째 요소를 찾습니다
-      //찾은 요소를 element 변수에 할당합니다.
-      const element = elements.filter((element) =>
-        element.innerText.includes(operation)
-      )[0];
 
-      element.classList.add("active");
+      button.classList.add("active");
     }
-
-    // 매개변수를 button으로 바꿔야됨
-    // setOpreation(button) {
-    //   //매개변수는(button.innerText) 연사자 요소 의 텍스트
-    //   this.operation = button.innerText
-    //   //이전값에 현재값을 넣어주고
-    //   this.prevValue = this.currentValue
-    //   //현재값을 없애줘서 인풋창에도 없애줌
-    //   this.currentValue = ''
-
-    //   button.classList.add('active')
-    // }
 
     //인풋창의 값을 업데이트 하는 매서드
     updateDisplay() {
@@ -205,7 +182,7 @@
   operationButtons.forEach((button) => {
     button.addEventListener("click", () => {
       //오퍼레이션(조작) 을 누를때 연산자를  operation에 할당,지정해주는  매서드
-      calculator.setOpreation(button.innerText);
+      calculator.setOpreation(button);
       calculator.updateDisplay();
     });
   });
